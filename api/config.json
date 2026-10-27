@@ -1,0 +1,13 @@
+// Shaly — public runtime config for the static site.
+// Deployed by Vercel as /api/config. NEVER put a secret in this file.
+export default function handler(req, res) {
+  res.setHeader("Cache-Control", "public, max-age=60, s-maxage=60");
+  res.status(200).json({
+    apiBase:    process.env.SHALY_API_BASE    || "",
+    botName:    process.env.SHALY_BOT_NAME    || "Shaly",
+    inviteUrl:  process.env.SHALY_INVITE_URL  || "",
+    supportUrl: process.env.SHALY_SUPPORT_URL || "",
+    clientId:   process.env.SHALY_DISCORD_CLIENT_ID || "",
+    pollMs:     Number(process.env.SHALY_POLL_MS) || 15000,
+  });
+}
